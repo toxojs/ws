@@ -1,4 +1,5 @@
 const { Server } = require('socket.io');
+const { serialize } = require('@toxo/serialize');
 
 class WsServer {
   constructor(settings = {}) {
@@ -54,7 +55,8 @@ class WsServer {
 
   broadcast(message) {
     if (this.io) {
-      this.io.emit('message', message);
+      const serialized = serialize(message);
+      this.io.emit('message', serialized);
     }
   }
 }

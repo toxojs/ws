@@ -1,4 +1,5 @@
 const { io } = require('socket.io-client');
+const { deserialize } = require('@toxo/serialize');
 
 class WsClient {
   constructor(settings = {}) {
@@ -21,7 +22,9 @@ class WsClient {
         this.onDisconnect(this.socket);
       });
       this.socket.on('message', (message) => {
-        this.onMessage(this.socket, message);
+        const deserialized = deserialize(message);
+        console.log('deserialization de la buena');
+        this.onMessage(this.socket, deserialized);
       });
       if (this.pingTime) {
         this.pingInterval = setInterval(() => {

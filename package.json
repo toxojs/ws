@@ -37,6 +37,7 @@
   "dependencies": {
     "@toxo/database": "^1.2.0",
     "@toxo/memory": "^1.1.0",
+    "@toxo/serialize": "^1.0.1",
     "socket.io": "^4.6.1",
     "socket.io-client": "^4.6.1"
   }
